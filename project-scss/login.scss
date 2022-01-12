@@ -1,0 +1,49 @@
+$white : #fff;
+$softwhite: #f8f8f8;
+$gray : #707070;
+$softgray : #cecece;
+$red: #ce1540;
+$black: #333333;
+$blue: #3397dc;
+
+
+
+
+.container-login{
+    background-color: $blue;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    .login-form{
+        margin: auto;
+    }
+    .field{
+        font-size: 0.75rem ;
+        margin-top: 0.5rem;
+        .control{
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-top: 5px;
+            .icon{
+                left: 0.5rem;
+                position: absolute;
+                opacity: 0.8;
+            }
+            .input{
+                border: none;
+                width: 20rem;
+                padding: 0.5rem 2rem;
+            }
+            .input:focus{
+                outline: none;
+            }
+
+        }
+        
+    }
+
+}

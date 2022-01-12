@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/style.css')}}">
+    <link rel='stylesheet' id='bycap-fontawsome-all-css'
+        href='https://use.fontawesome.com/releases/v5.15.4/css/all.css?ver=5.15.4' type='text/css' media='all' />
+    <link rel='stylesheet' id='bycap-fontawsome-shim-css'
+        href='https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css?ver=5.15.4' type='text/css' media='all' />
+    <title>Login</title>
+</head>
+{% extends "errors.html" %}
+{% block body %}
+<body>
+    <div class="container-login">
+        <div class="login-form">
+            <form method="POST">
+                <div class="field">
+                    <label class="label">Username</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" type="text" name="username" placeholder="Username">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left">
+                        <input class="input" type="password" name="password" placeholder="Password">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <p class="control">
+                        <button type="submit" class="btn btn-login">
+                            Login
+                        </button>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <script src="{{ url_for('static', filename='dist/js/main.js')}}"></script>
+</body>
+{% endblock %}
+</html>

@@ -1,0 +1,14 @@
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div id="modal" class="modal">
+
+  <div class="modal__content">
+      {% for message in messages %}
+      {{ message }}
+      {% endfor %}
+  </div>
+  <button onclick="close_modal()"><span><i class="fa fa-close "></i></i></span></button>
+</div>
+{% endif %}
+{% endwith %}
+{% block body %}{% endblock %}

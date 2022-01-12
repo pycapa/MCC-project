@@ -1,0 +1,38 @@
+// file ###> _variables.scss
+$white : #fff;
+$softwhite: #f8f8f8;
+$gray : #707070;
+$softgray : #cecece;
+$red: #ce1540;
+$black: #333333;
+$blue: #3397dc;
+
+
+.modal{
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    width: 50%;
+    overflow: auto;
+    background-color: #ce1540;
+    margin: auto;
+    transform: translateX(-50%);
+    background-color: $red;
+    padding: 2rem;
+    top:5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 2s ease;
+    &__content,
+    .fa{
+        color:$softwhite;
+        text-align: center;
+    }
+    button{
+        background: none;
+        border: none;
+        font-size: 1.12rem;
+        cursor: pointer;
+    }
+}
