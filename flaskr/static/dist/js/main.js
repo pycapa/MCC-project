@@ -9,26 +9,24 @@ window.addEventListener('load', ()=>{
 document.addEventListener('click', (event) => {
 
     // Validate if was click on menu and show menu option in header.
-    menu_click(event.target);
+    menu_click(event, event.target);
+
 });
 
-function menu_click(target){
-    const menu = document.querySelectorAll('.menu-option');
+function menu_click(event, target){
+    const menu = document.getElementsByClassName('menu-option');
     const icons = document.querySelectorAll('.icon-option');
     const header = document.querySelector('.title-header')
     const icon_header = document.querySelector('.icon-header i')
-
-    const elements = [];
     for(let i=0; i<(menu.length); i++){
-
+        menu[i].classList.remove('active')
         if (target.innerText === menu[i].innerText) {
-            console.log(target.innerText);
-            console.log(icons[i].className)
             header.innerHTML =  target.innerText
-            icon_header.className = icons[i].className;          
+            icon_header.className = icons[i].className;   
+            menu[i].classList.add('active')      
         }
-
     }
+
 }
 
 function close_modal(){

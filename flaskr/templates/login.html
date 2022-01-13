@@ -1,23 +1,8 @@
 
-<!DOCTYPE html>
-<html lang="en-es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/style.css')}}">
-    <link rel='stylesheet' id='bycap-fontawsome-all-css'
-        href='https://use.fontawesome.com/releases/v5.15.4/css/all.css?ver=5.15.4' type='text/css' media='all' />
-    <link rel='stylesheet' id='bycap-fontawsome-shim-css'
-        href='https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css?ver=5.15.4' type='text/css' media='all' />
-    <title>Login</title>
-</head>
+{% include 'header.html' %}
 {% extends "errors.html" %}
 {% block body %}
+
 <body>
     <div class="container-login">
         <div class="login-form">
@@ -42,7 +27,7 @@
                 </div>
                 <div class="field">
                     <p class="control">
-                        <button type="submit" class="btn btn-login">
+                        <button type="submit" class="btns btn-login">
                             Login
                         </button>
                     </p>
@@ -51,7 +36,6 @@
         </div>
 
     </div>
-    <script src="{{ url_for('static', filename='dist/js/main.js')}}"></script>
 </body>
 {% endblock %}
-</html>
+{% include 'footer.html' %}

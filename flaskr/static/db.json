@@ -1,0 +1,13 @@
+{"user" : {
+    "database":"users",
+    "user" : "root",
+    "password": "",
+    "host" : "localhost"
+    },
+"MCC": {
+    "database":"MCC",
+    "user" : "root",
+    "password": "",
+    "host" : "localhost"
+    }
+}
