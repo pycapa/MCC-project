@@ -1,4 +1,6 @@
 {% include 'header.html' %}
+
+
     <!-- Vertical Nav Menu-->
     <div class="contenedor">
         {% include 'menu.html' %}
@@ -34,9 +36,10 @@
                         <div class="show-data__data">
                             <ul>
                                 {% for element in data %}
-                                <li> <div>{{ element[1] }}</div><a href="{{ url_for('delete', id=element[0],table='nema',
-                                    field_id='nema_id', url_return='nema') }}" class="btns btn-delete" type='submit'><i
+                                   <li> <div>{{ element.Description }}</div><a 
+                                    onclick="delete_item({{element.NemaId}}, 'nema', 'nema_id', 'nema', '{{element.Description}}')" class="btns btn-delete" type='submit'><i
                                     class="fa fa-trash"></i></a></li>
+                                
                                 {% endfor %}
                             </ul>
                         </div>
@@ -47,4 +50,7 @@
             </div>
         </div>
     </div>
-    {% include 'footer.html' %}
+
+    
+{% include 'footer.html' %}
+

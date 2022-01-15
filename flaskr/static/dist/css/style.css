@@ -18,30 +18,28 @@ body {
 }
 
 .btns {
-  width: 6rem;
   border: none;
-  padding: 0.3rem 1rem;
+  padding: 0 1rem;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 10px;
   text-align: center;
   font-size: 0.8125rem;
+  place-content: center;
+  text-decoration: none;
+  height: 1.25rem;
+  min-width: 4rem;
 }
 
 .btn-login {
-  background-color: #f8f8f8;
   color: #3397dc;
 }
 
 .btn-submit {
-  background-color: #3397dc;
-  color: #f8f8f8;
+  color: #3397dc;
 }
 
 .btn-delete {
-  background-color: #ce1540;
-  color: #f8f8f8;
-  right: 11rem;
-  position: absolute;
+  color: #ce1540;
 }
 
 .btn-submit:hover,
@@ -49,9 +47,26 @@ body {
   color: #707070;
 }
 
+.confirmation {
+  display: flex;
+  width: 300px;
+  height: 200px;
+  flex-direction: column;
+  place-content: center;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  background-color: #f8f8f8;
+  box-shadow: 2px 2px 5px 1px #707070;
+  border-radius: 5%;
+  transform: translate(-50%, -50%);
+}
+
 .contenedor {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 .contenedor .navbar {
   background-color: #333333;
@@ -63,11 +78,11 @@ body {
 }
 .contenedor .navbar .nav-brand {
   background-color: #3397dc;
-  margin-top: 0;
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 3.5rem;
   display: flex;
+  top: 0;
   align-items: center;
 }
 .contenedor .navbar .nav-brand__title {
@@ -76,6 +91,10 @@ body {
   color: #f8f8f8;
   text-align: center;
   margin: auto;
+}
+.contenedor .navbar nav {
+  width: 100%;
+  margin-top: 0;
 }
 .contenedor .navbar nav ul {
   padding: 1.75rem;
@@ -150,6 +169,8 @@ body {
   display: flex;
   justify-content: space-around;
   padding: 2rem;
+  width: 85%;
+  margin: auto;
 }
 .data .input-data form .input-data {
   border: none;
@@ -157,7 +178,10 @@ body {
   background-color: #f8f8f8;
 }
 .data .input-data form .input-data:focus {
-  border: none;
+  outline: none;
+}
+.data .input-data:focus {
+  border: None;
 }
 .data .show-data {
   border-top: 3px #3397dc solid;
@@ -173,24 +197,38 @@ body {
 }
 .data .show-data__data {
   width: 85%;
-  margin-left: 2.25rem;
-}
-.data .show-data__data ul {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  margin: auto;
+  padding: 1rem;
+  border: 1px solid #cecece;
+  box-shadow: 1px 1px 2px #cecece;
+  height: 75vh;
+  overflow-y: auto;
 }
 .data .show-data__data ul li {
   display: flex;
-  align-items: center;
-  padding: 0.5rem;
+  cursor: pointer;
+  padding-left: 0.125rem;
 }
-.data .show-data__data ul li:nth-child(odd) {
+.data .show-data__data ul li div {
+  width: 80%;
+  padding: 0.1rem 0.5rem;
+}
+.data .show-data__data ul li a {
+  margin: auto;
+}
+.data .show-data__data li:hover div {
+  color: #3397dc !important;
+  transition: all 0.5s ease;
+  font-weight: 600;
+}
+.data .show-data ul li:nth-child(odd) div {
   background-color: #f8f8f8;
 }
-.data .show-data__data ul div {
-  width: 80%;
-  margin-bottom: 0.5rem;
+
+.code {
+  max-width: 12.5rem;
+  margin-right: 1rem;
+  border-right: 1px solid #3397dc;
 }
 
 .container-login {
@@ -229,7 +267,7 @@ body {
   outline: none;
 }
 
-.modal {
+.error {
   position: fixed;
   z-index: 1;
   left: 50%;
@@ -246,12 +284,12 @@ body {
   justify-content: space-between;
   transition: 2s ease;
 }
-.modal__content,
-.modal .fa {
+.error__content,
+.error .fa {
   color: #f8f8f8;
   text-align: center;
 }
-.modal button {
+.error button {
   background: none;
   border: none;
   font-size: 1.12rem;

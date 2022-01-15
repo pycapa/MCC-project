@@ -1,49 +1,67 @@
 {% include 'header.html' %}
-    <!-- Vertical Nav Menu-->
-    <div class="contenedor">
-        {% include 'menu.html' %}
-        <div class="data-section">
-            <div class="header">
-                <div class="header__description">
-                    <span class="icon-header"><i class="fab fa-buromobelexperte"></i></span>
-                    <p class="title-header">Components</p>
-                </div>
-                <div class="header__date-time">
-                    <p class="date-time"></p>
-                </div>
+
+
+<!-- Vertical Nav Menu-->
+<div class="contenedor">
+    {% include 'menu.html' %}
+    <div class="data-section">
+        <div class="header">
+            <div class="header__description">
+                <span class="icon-header"><i class="fab fa-buromobelexperte"></i></span>
+                <p class="title-header">Components</p>
             </div>
-            <div class="data">
-                {% for message in get_flashed_messages() %}
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {% endfor %}
-                <!-- Here comes data-->
-                <div class="input-data">
-                    <form method="POST">
-                        <label >Component Description : </label>
+            <div class="header__date-time">
+                <p class="date-time"></p>
+            </div>
+        </div>
+        <div class="data">
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            <!-- Here comes data-->
+            <div class="input-data">
+                <form id = "input-data" method="POST">
+                    <div class='code'>
+                        <label> Code : </label>
+                        <input class="input-data" type="text" name="code" autofocus>
+                    </div>
+                    <div style="width: 70%;">
+                        <label>Component Description : </label>
                         <input class="input-data" type="text" name="desc">
+                    </div>
+
+                    <div>
                         <button class="btns btn-submit" type="submit"><i class="fa fa-save"></i> </button>
-                    </form>
+                    </div>
+                </form>
 
+            </div>
+            <div class="show-data">
+
+                <!-- <div class="show-data__line"> -->
+                <div class="show-data__data">
+                    <ul>
+                        {% for element in data %}
+                        <li>
+                            <div class='code'>{{ element.code }}</div>
+                            <div>{{ element.description }}</div><a
+                                onclick="delete_item({{element.component_id}}, 'components', 'component_id', 'components', '{{element.description}}')"
+                                class="btns btn-delete" type='submit'><i class="fa fa-trash"></i></a>
+                        </li>
+
+                        {% endfor %}
+                    </ul>
                 </div>
-                <div class="show-data">
 
-                    <!-- <div class="show-data__line"> -->
-                        <div class="show-data__data">
-                            <ul>
-                                {% for element in data %}
-                                <li> <div>{{ element[1] }}</div><a href="{{ url_for('deletecomp', id=element[0]) }}" class="btns btn-delete" type='submit'><i
-                                    class="fa fa-trash"></i></a></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        
-                    <!-- </div> -->
+                <!-- </div> -->
 
-                </div>
             </div>
         </div>
     </div>
-    {% include 'footer.html' %}
+</div>
+
+
+{% include 'footer.html' %}
