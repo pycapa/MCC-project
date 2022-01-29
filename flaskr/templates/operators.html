@@ -1,6 +1,4 @@
 {% include 'header.html' %}
-
-
     <!-- Vertical Nav Menu-->
     <div class="contenedor">
         {% include 'menu.html' %}
@@ -8,7 +6,7 @@
             <div class="header">
                 <div class="header__description">
                     <span class="icon-header"><i class="fab fa-buromobelexperte"></i></span>
-                    <p class="title-header">Nema Size</p>
+                    <p class="title-header">Operators</p>
                 </div>
                 <div class="header__date-time">
                     <p class="date-time"></p>
@@ -32,9 +30,9 @@
                 {% endwith %}
                 <!-- Here comes data-->
                 <div class="input-data">
-                    <form action='/nema' method="POST">
-                        <label >Nema Size Description : </label>
-                        <input class="input-data" type="text" name="desc" autofocus>
+                    <form action='/operators' method="POST">
+                        <label >Full name : </label>
+                        <input id='desc' class="input-data" type="text" name="name">
                         <button id='btn-submit' class="btns btn-submit" type="submit"><i class="fa fa-save"></i> </button>
                     </form>
 
@@ -42,11 +40,12 @@
                 <div class="show-data">
 
                     <!-- <div class="show-data__line"> -->
+        
                         <div class="show-data__data">
                             <ul>
                                 {% for element in data %}
-                                    {% if element.Nema_id != 'None' %}
-                                        <li id = {{element.Nema_id}} data-table = '{{element.table}}' data-key = {{element.key}}> <div> {{element.Description}}</div><a id='btn-delete' class="btns btn-delete" type='submit'><i
+                                    {% if element.operator_id != 'None' %}
+                                        <li id = {{element.operator_id}} data-table = '{{element.table}}' data-key = {{element.key}}> <div> {{element.name}}</div><a id='btn-delete' class="btns btn-delete" type='submit'><i
                                         class="fa fa-trash"></i></a></li>
                                     {% endif %}
                                 {% endfor %}
@@ -54,12 +53,9 @@
                         </div>
                         
                     <!-- </div> -->
-
                 </div>
             </div>
         </div>
     </div>
 
-    
-{% include 'footer.html' %}
-
+    {% include 'footer.html' %}

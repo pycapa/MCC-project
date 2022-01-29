@@ -13,18 +13,27 @@
                 </div>
             </div>
             <div class="data">
-                {% for message in get_flashed_messages() %}
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {% endfor %}
+                {% with messages = get_flashed_messages(with_categories = true) %}
+                    {% for category, message in messages %}
+                        {% if category == ['error'] %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endwith %}
                 <!-- Here comes data-->
                 <div class="input-data">
-                    <form method="POST">
+                    <form action='/equipment' method="POST">
                         <label >Equipment Description : </label>
-                        <input class="input-data" type="text" name="desc">
-                        <button class="btns btn-submit" type="submit"><i class="fa fa-save"></i> </button>
+                        <input id='desc' class="input-data" type="text" name="desc">
+                        <button id='btn-submit' class="btns btn-submit" type="submit"><i class="fa fa-save"></i> </button>
                     </form>
 
                 </div>
@@ -34,9 +43,9 @@
         
                         <div class="show-data__data">
                             <ul>
-                                {% for eq in list %}
-                                    {% if eq.EqpId != 'None' %}
-                                    <li id={{eq.EqpId}}> <div>{{eq.Description}}</div><a onclick="delete_item({{eq.EqpId}}, 'Equipments', 'Equipment_id', 'equipments', '{{eq.Description}}')" class="btns btn-delete" type='submit'><i
+                                {% for eq in data %}
+                                    {% if eq.Equipment_id != 'None' %}
+                                        <li id = {{eq.Equipment_Id}} data-table = '{{eq.table}}' data-key = {{eq.key}}> <div> {{eq.Description}}</div><a id='btn-delete' class="btns btn-delete" type='submit'><i
                                         class="fa fa-trash"></i></a></li>
                                     {% endif %}
                                 {% endfor %}
@@ -48,8 +57,5 @@
             </div>
         </div>
     </div>
-
-
-
 
     {% include 'footer.html' %}

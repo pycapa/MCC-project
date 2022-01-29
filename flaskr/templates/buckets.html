@@ -6,7 +6,7 @@
         <div class="header">
             <div class="header__description">
                 <span class="icon-header"><i class="fab fa-buromobelexperte"></i></span>
-                <p class="title-header">Components</p>
+                <p class="title-header">Buckets</p>
             </div>
             <div class="header__date-time">
                 <p class="date-time"></p>
@@ -30,14 +30,14 @@
             {% endwith %}
             <!-- Here comes data-->
             <div class="input-data">
-                <form action='/components' method="POST">
-                    <div class='code'>
-                        <label> Code : </label>
-                        <input class="input-data" type="text" name="code" autofocus>
+                <form action='/buckets' method="POST">
+                    <div class='code' style='width: 50%;'>
+                        <label> Type : </label>
+                        <input class="input-data" type="text" name="type" autofocus>
                     </div>
-                    <div style="width: 70%;">
-                        <label>Component Description : </label>
-                        <input class="input-data" type="text" name="desc">
+                    <div style="width: 50%;">
+                        <label>Job Estimated Hours : </label>
+                        <input class="input-data" type="number" name="hrs_estimated">
                     </div>
 
                     <div>
@@ -52,10 +52,10 @@
                 <div class="show-data__data">
                     <ul>
                         {% for element in data %}
-                        {% if element.component_id != 'None' %}
-                        <li id={{element.component_id}} data-table= '{{element.table}}' data-key= {{element.key}}>
-                            <div class='code'>{{element.code}}</div>
-                            <div>{{element.description}}</div><a id='btn-delete'
+                        {% if element.Bucket_id != 'None' %}
+                        <li id={{element.Bucket_id}} data-table= '{{element.table}}' data-key= {{element.key}}>
+                            <div class='code'>{{element.Type}}</div>
+                            <div>{{element.Hrs_Estimated}}</div><a id='btn-delete'
                                 class="btns btn-delete" type='submit'><i class="fa fa-trash"></i></a>
                         </li>
                         {% endif %}

@@ -1,13 +1,7 @@
-{"user" : {
-    "database":"users",
-    "user" : "root",
-    "password": "",
-    "host" : "localhost"
-    },
-"MCC": {
-    "database":"MCC",
-    "user" : "root",
-    "password": "",
-    "host" : "localhost"
-    }
+
+{
+    "_HOST":"us-cdbr-east-05.cleardb.net",
+    "_USER" : "b09f93e7cfc688",
+    "_PASSWORD": "63547657",
+    "_DATABASE" : "heroku_4e8e417c8946624"
 }

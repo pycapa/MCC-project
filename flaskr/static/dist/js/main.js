@@ -3,12 +3,33 @@
 
 var modalWrap = null;
 
+const btnSubmit = document.querySelector('#btn-submit')
+btnSubmit.addEventListener('click', (e)=>{
+    e.preventDefault()
 
+    const $form = document.querySelector('form') 
+    console.log($form);
+    fetch($form.action,{
+        method: $form.method,
+        body: new FormData($form)
+    }, 
+    spin())
+    .then(res => res.json())
+    .then(()=>location.reload())
+    .catch(err => alert(err))
+    /* 
+
+
+    e.preventDefault()
+    spin()
+    location.reload()
+ */})
 
 window.addEventListener('load', ()=>{
     const date = new Date().toLocaleString();
     const date_time = document.querySelector('.date-time');
     date_time.innerHTML = `${date}`;
+
 })
 
 document.addEventListener('click', (event) => {
@@ -34,9 +55,9 @@ function menu_click(event, target){
 
 }
 
+function createModalWindow(){
 
-function delete_item(id, table, field_id, url_return, message){
-
+    // Creatting modal window for validation.
     if (modalWrap !== null){
         modalWrap.remove()
     }
@@ -51,57 +72,63 @@ function delete_item(id, table, field_id, url_return, message){
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                Are you shure to delete this: ${message} ?
+                Are you shure to delete this:?
                 </div>
                 <div class="modal-footer">
-                <a class="btns btn-submit" data-bs-dismiss="modal">Cancel</a>
-                <a class="btns btn-delete modal-success-btn" data-bs-dismiss="modal">Delete</a>
+                <a class="btns btn-submit" data-bs-dismiss="modal" data-response='cancel'>Cancel</a>
+                <a class="btns btn-delete modal-success-btn" data-bs-dismiss="modal" data-response = 'delete'>Delete</a>
                 </div>
             </div>
             </div>
         </div>
     `
-    modalWrap.querySelector('.modal-success-btn').onclick = ()=>{
-        
-        var data = JSON;
-
-        data = {
-            "id" : id,
-            "table" : table,
-            "field_id" : field_id,
-            "url_return" : url_return
-        }
-        // Server Request
-        var client = new XMLHttpRequest();
-
-        client.open("POST", "/delete")
-        client.setRequestHeader("Content-Type", "application/json")
-        client.setRequestHeader("Location", `/${data['url_return']}`)
-        
-        client.onreadystatechange = function() {
-            location.reload()
-        }
-        client.send(JSON.stringify(data))
-
-    };
-
     document.body.append(modalWrap)
-    var modal = new bootstrap.Modal(modalWrap.querySelector('.modal'));
-    modal.show();
+    const modal = new bootstrap.Modal(modalWrap.querySelector('.modal'));
+    return modal
+}
 
-/* 
+// Delete records.
+const $btnDelete = document.querySelectorAll('#btn-delete') 
+
+$btnDelete.forEach(btn => {
+    btn.addEventListener('click', ()=>{
+        var id = btn.parentElement.id
+        var dataset = btn.parentElement.dataset.table
+        var key = btn.parentElement.dataset.key
+
+        const modal = createModalWindow()
+        const modalresponse = document.querySelector('.modal')
 
 
+        modalresponse.addEventListener('hide.bs.modal', function(event){
+            const confirm = event.explicitOriginalTarget.dataset.response
+            if (confirm=='delete'){
+                fetch(`/delete/${id},${dataset},${key}`,{
+                    method:'POST'
+                }, spin())
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    location.reload()})
+                .catch(err => console.log(err))
+            }
 
-    var myModalEl = document.getElementById('exampleModal')
-
-    var modal = new bootstrap.Modal(myModalEl) // initialized with defaults
-
-    modal.show()
-
-    myModalEl.addEventListener('hidden.bs.modal', function (event) {
-        console.log(event.currentTarget) 
         })
- */}
+        
+        modal.show()
+
+    })
+});
 
 
+// spin function
+
+function spin(loadding=true){
+    
+    const spinDiv = document.createElement('div')
+    spinDiv.innerHTML = '<div id="circle"></div>'
+    document.body.append(spinDiv)
+    const spin = document.querySelector('#circle')
+    spin.classList.add('circle')
+    
+}

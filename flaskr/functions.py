@@ -1,9 +1,7 @@
 import json
 import os
 
-
 confg = json.dumps
-
 
 def databases_conf(url):
     filename = os.path.join(url, 'db.json')
@@ -11,3 +9,4 @@ def databases_conf(url):
         data = json.load(json_file)
     return data
 
+                    
